@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Principal {
     private Scanner leitura = new Scanner(System.in);
     private final String ENDERECO = "https://www.omdbapi.com/?t=";
-    private final String API_KEY = "&apikey=82df851d";
+    private final String API_KEY = System.getenv("APIKEY");
     private ConsumoAPI consumo = new ConsumoAPI();
     private ConverteDados conversor = new ConverteDados();
 
