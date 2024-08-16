@@ -53,7 +53,7 @@ public class Serie {
 
     @Override
     public String toString() {
-        return "** Serie ** \n" +
+        return
                 "titulo: " + titulo + "\n" +
                 "totalTemporadas: " + totalTemporadas + "\n" +
                 "avaliacao: " + avaliacao + "\n" +

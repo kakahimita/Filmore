@@ -5,7 +5,8 @@ import com.example.filmoretst01.model.Serie;
 import com.example.filmoretst01.service.ConsumoAPI;
 import com.example.filmoretst01.service.ConverteDados;
 
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Principal {
     private Scanner leitura = new Scanner(System.in);
@@ -13,6 +14,7 @@ public class Principal {
     private final String API_KEY = System.getenv("APIKEY");
     private ConsumoAPI consumo = new ConsumoAPI();
     private ConverteDados conversor = new ConverteDados();
+    private List<Serie> listasDeSerie = new ArrayList<>();
 
     private String menu = """
             *** Filmore ***
@@ -38,10 +40,10 @@ public class Principal {
                     buscarSerieWeb();
                     break;
                 case 2:
-//                    buscarEpisodioPorSerie();
+                    buscarEpisodioPorSerie();
                     break;
                 case 3:
-//                    listarSeriesBuscadas();
+                    listarSeriesBuscadas();
                     break;
                 case 0:
                     System.out.println("saindo...");
@@ -53,7 +55,16 @@ public class Principal {
         }
     }
 
-    private void buscarSerieWeb() {
+    private void buscarEpisodioPorSerie() {
+
+    }
+
+    private void listarSeriesBuscadas() {
+        System.out.println("*** SÉRIES ***");
+        listasDeSerie.forEach(System.out::println);
+    }
+
+    private Serie buscarSerieWeb() {
         System.out.print("qual série deseja buscar: ");
         String nomeSerie = leitura.nextLine();
 
@@ -64,7 +75,22 @@ public class Principal {
 
         Serie serie = new Serie(dadosSerie);
 
-        System.out.println(" ");
-        System.out.println(serie);
+        // verificando se a série já foi buscada alguma vez!
+
+        Optional<Serie> serieBuscada = listasDeSerie.stream()
+                        .filter(s -> s.getTitulo().equalsIgnoreCase(nomeSerie))
+                                .findFirst();
+
+        if (serieBuscada.isPresent()) {
+            System.out.println(" ");
+            System.out.println(serie);
+        } else {
+            System.out.println("""
+                    
+                    *** Uau uma série nova foi adicionada! :D ***""");
+            listasDeSerie.add(serie);
+            System.out.println(serie);
+        }
+        return serie;
     }
 }
