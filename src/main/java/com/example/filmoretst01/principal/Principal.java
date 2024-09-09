@@ -16,6 +16,8 @@ public class Principal {
     private ConverteDados conversor = new ConverteDados();
     private List<Serie> listasDeSerie = new ArrayList<>();
 
+    // testando um commid utilizando o ubuntu 24.4 >_<
+
     private String menu = """
             *** Filmore ***
                         
