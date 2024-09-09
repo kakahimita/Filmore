@@ -55,8 +55,8 @@ public class Serie {
     public String toString() {
         return
                 "titulo: " + titulo + "\n" +
-                "totalTemporadas: " + totalTemporadas + "\n" +
-                "avaliacao: " + avaliacao + "\n" +
-                "anoLancamento: " + anoLancamento + "\n";
+                        "totalTemporadas: " + totalTemporadas + "\n" +
+                        "avaliacao: " + avaliacao + "\n" +
+                        "anoLancamento: " + anoLancamento + "\n";
     }
 }
